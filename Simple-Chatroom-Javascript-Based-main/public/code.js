@@ -1,7 +1,7 @@
 (function() {
 
   const APP = document.querySelector(".app");
-  const SOCKET = io();
+  const SOCKET = io("localhost:3001");
   let uname;
 
   const joinUserBtn = APP.querySelector(".join-screen #join-user");

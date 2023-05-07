@@ -1,7 +1,11 @@
 const express = require("express");
 const path = require("path");
 
+const cors = require('cors');
+
 const app = express();
+app.use(cors());
+
 const server = require("http").createServer(app);
 
 const io = require("socket.io")(server);
@@ -17,7 +21,10 @@ io.on("connection", function(socket){
 	});
 	socket.on("chat",function(message){
 		socket.broadcast.emit("chat", message);
+		console.log(message)
 	});
 });
 
-server.listen(5000);
+app.listen(3001, () => {
+	console.log('Server running on port 3001');
+  });
